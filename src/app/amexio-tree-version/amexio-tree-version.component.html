@@ -1,3 +1,20 @@
 <div class="aussen">
-  <p>amexio-tree-version works D7X</p>
+  <kendo-treeview
+    #treeview
+    [nodes]="data"
+    textField="text"
+    kendoTreeViewExpandable
+    kendoTreeViewSelectable
+    kendoTreeViewHierarchyBinding
+    childrenField="items"
+    (nodeClick)="onNodeClick($event)"
+  >
+  </kendo-treeview>
+  <kendo-contextmenu
+    #treemenu
+    [target]="treeview.element.nativeElement"
+    [items]="items"
+    (select)="onSelect($event)"
+  >
+  </kendo-contextmenu>
 </div>
