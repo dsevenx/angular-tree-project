@@ -26,13 +26,21 @@ export class AmexioTreeVersionComponent implements OnInit {
       items: [
         { text: 'Bed Linen' },
         { text: 'Curtains & Blinds' },
-        { text: 'Carpets' },
+        {
+          text: 'expance',
+          items: [
+            { text: 'Bed Linen22' },
+            { text: 'Curtains & Blinds22' },
+            { text: 'Carpets22' },
+          ],
+        },
       ],
     },
   ];
   public items: any[] = [
     { text: 'Einzelvertrag', icon: 'create' },
-    { text: 'Objektklasse', icon: '' },
+    { text: 'Objektklasse', icon: 'info' },
+    { text: 'Verzweigen', icon: 'info' },
     { text: 'Remove', icon: 'close' },
   ];
 
@@ -73,10 +81,8 @@ export class AmexioTreeVersionComponent implements OnInit {
         this.removeItem(this.contextItem, this.data);
       } else if (pEreignis.item.text === 'Einzelvertrag') {
         alert('Einzelvertrag: ' + this.contextItem.text);
-        this.removeItem(this.contextItem, this.data);
       } else if (pEreignis.item.text === 'Objektklasse') {
         alert('Objektklasse: ' + this.contextItem.text);
-        this.removeItem(this.contextItem, this.data);
       }
     }
   }
