@@ -1,18 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+//import { AmexioDataModule } from 'amexio-ng-extensions';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DetreeHeaderComponent } from './detree-header/detree-header.component';
+import { AmexioTreeVersionComponent } from './amexio-tree-version/amexio-tree-version.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DetreeHeaderComponent,
+    AmexioTreeVersionComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    //  , AmexioDataModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
