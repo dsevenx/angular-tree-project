@@ -14,30 +14,47 @@ export class AmexioTreeVersionComponent implements OnInit {
 
   public data: any[] = [
     {
-      text: 'Rahmen 1',
+      text: 'Rahmen AS2225553334',
       items: [
-        { text: 'Tables & Chairs' },
-        { text: 'Sofas' },
-        { text: 'Occasional Furniture' },
-      ],
-    },
-    {
-      text: 'Rahmen 2',
-      items: [
-        { text: 'Bed Linen' },
-        { text: 'Curtains & Blinds' },
         {
-          text: 'expance',
+          text: 'Firmeinheit AS2224443334',
           items: [
-            { text: 'Bed Linen22' },
-            { text: 'Curtains & Blinds22' },
-            { text: 'Carpets22' },
+            {
+              text: 'Tarifmodell FP AS1114443334001',
+              items: [
+                {
+                  text: 'Objektklasse AS1114443334001',
+                  items: [
+                    { text: 'Einzelvertrag AS111000001' },
+                    { text: 'Einzelvertrag AS111000002' },
+                    { text: 'Einzelvertrag AS111000003' },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          text: 'Firmeinheit AS2224443334',
+          items: [
+            {
+              text: 'Tarifmodell FP AS2224443334001',
+              items: [
+                {
+                  text: 'Objektklasse AS2224443334001',
+                  items: [
+                    { text: 'Einzelvertrag AS222000001' },
+                    { text: 'Einzelvertrag AS222000002' },
+                  ],
+                },
+              ],
+            },
           ],
         },
       ],
     },
   ];
-  public items: any[] = [
+  public kontextmenuRahmen: any[] = [
     { text: 'Einzelvertrag', icon: 'create' },
     { text: 'Objektklasse', icon: 'info' },
     { text: 'Verzweigen', icon: 'info' },
@@ -78,7 +95,6 @@ export class AmexioTreeVersionComponent implements OnInit {
   public onSelect(pEreignis: any): void {
     if (pEreignis && pEreignis.item && pEreignis.item.text) {
       if (pEreignis.item.text === 'Remove') {
-        this.removeItem(this.contextItem, this.data);
       } else if (pEreignis.item.text === 'Einzelvertrag') {
         alert('Einzelvertrag: ' + this.contextItem.text);
       } else if (pEreignis.item.text === 'Objektklasse') {
@@ -87,117 +103,7 @@ export class AmexioTreeVersionComponent implements OnInit {
     }
   }
 
-  private removeItem(dataItem: any, items: any[]): void {
-    const index = items.indexOf(dataItem);
-    if (index >= 0) {
-      items.splice(index, 1);
-    } else {
-      items.forEach((item) => {
-        if (item.items) {
-          this.removeItem(dataItem, item.items);
-        }
-      });
-    }
-  }
-
-  treeLocalData: any;
-  rightclickdata: any;
-
-  constructor() {
-    this.rightclickdata = [
-      { text: 'Add New', icon: 'fa fa-plus', disabled: true },
-      { text: 'Edit', icon: '', seperator: true },
-      { text: 'Send data in email', icon: '' },
-    ];
-
-    this.treeLocalData = {
-      data: [
-        {
-          text: 'Web App',
-          expand: true,
-          children: [
-            {
-              text: 'app',
-              expand: true,
-              badge: 1,
-              children: [
-                {
-                  leaf: true,
-                  text: 'Application.js',
-                },
-              ],
-            },
-            {
-              text: 'button',
-              expand: true,
-              badge: 3,
-              children: [
-                {
-                  leaf: true,
-                  text: 'Button.js',
-                },
-                {
-                  leaf: true,
-                  text: 'Cycle.js',
-                },
-                {
-                  leaf: true,
-                  text: 'Split.js',
-                },
-              ],
-            },
-            {
-              text: 'container',
-              expand: true,
-              badge: 3,
-              children: [
-                {
-                  leaf: true,
-                  text: 'ButtonGroup.js',
-                },
-                {
-                  leaf: true,
-                  text: 'Container.js',
-                },
-                {
-                  leaf: true,
-                  text: 'Viewport.js',
-                  expand: true,
-                  children: [],
-                  lazy: {
-                    'http-url': 'data/treeview.json',
-                    'http-method': 'get',
-                  },
-                },
-              ],
-            },
-            {
-              text: 'core',
-              expand: true,
-              badge: 1,
-              children: [
-                {
-                  text: 'dom',
-                  expand: true,
-                  badge: 2,
-                  children: [
-                    {
-                      leaf: true,
-                      text: 'Element.form.js',
-                    },
-                    {
-                      leaf: true,
-                      text: 'Element.static-more.js',
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    };
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 }
